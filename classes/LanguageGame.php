@@ -1,5 +1,11 @@
 <?php
 
+function pre($input)
+{
+    echo "<pre>";
+    var_dump($input);
+    echo "</pre>";
+}
 class LanguageGame
 {
     private array $words;
@@ -9,9 +15,12 @@ class LanguageGame
         // :: is used for static functions
         // They can be called without an instance of that class being created
         // and are used mostly for more *static* types of data (a fixed set of translations in this case)
+        $this->words = [];
         foreach (Data::words() as $frenchTranslation => $englishTranslation) {
-            // TODO: create instances of the Word class to be added to the words array
+            // create instances of the Word class to be added to the words array
+            array_push($this->words, new Word($frenchTranslation, $englishTranslation));
         }
+        pre($this->words);
     }
 
     public function run(): void
