@@ -9,5 +9,13 @@
 </head>
 <body>
 	<!-- TODO: add a form for the user to play the game -->
+	<form action="" method="post">
+		<p>Can you translate this word? : <?php echo $game->randomWord(); ?> </p>
+		<label for="word">Enter your answer here: </label>
+		<input id="word" name="word" type="text"><br>
+		<input type="submit">
+		
+	</form>
+	<?php pre($_POST); ?>
 </body>
 </html>
