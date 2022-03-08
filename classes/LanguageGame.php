@@ -20,7 +20,6 @@ class LanguageGame
             // create instances of the Word class to be added to the words array
             $this->words[] = new Word($frenchTranslation, $englishTranslation);
         }
-        // pre($this->words);
     }
 
     public function run(): void
@@ -29,18 +28,14 @@ class LanguageGame
         if (!isset($_POST["guessedAnswer"]) || empty($_POST["guessedAnswer"])){ // Option A: user visits site first time (or wants a new word)
             $this->randomWord();
         } else { // Option B: user has just submitted an answer    
-            // TODO: verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first
             foreach($this->words as $wordObject) {
                 if($wordObject->word == $_POST['randomWordCheck']){
-                    $wordObject->verify($wordObject->answer);
-                    // if ($wordObject->verify($_POST['randomWordCheck'])){
-                    //     var_dump("JOEPIE");
-                    // }
-                    return;
+                    echo $this->createMessage($wordObject);
+                    return;    
                 }
             }
         }
-        // TODO: generate a message for the user that can be shown
+        
     }
     
     public function randomWord()
@@ -50,5 +45,16 @@ class LanguageGame
         $this->randomWord = strtolower($this->words[$randomIndexNumber]->word); 
         return $this->randomWord;
         
+    }
+
+    public function createMessage($wordObject) // Generate a message for the user that can be shown
+    {
+        // Verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first
+        if ($wordObject->verify($_POST["guessedAnswer"])) {
+            $message = "<h3> YAY! Your answer is correct! </h3>";
+        } else {
+            $message = "<h3> BOEHOE! Your answer is INCORRECT! </h3>";
+        }
+        return $message;
     }
 }
