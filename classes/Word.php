@@ -14,12 +14,10 @@ class Word
 
     public function verify(string $answer): bool
     {
-        // TODO: use this function to verify if the provided answer by the user matches the correct one
-            if ($_POST["guessedAnswer"] === $this->answer) {
-                echo "CORRECT ";
+        // Use this function to verify if the provided answer by the user matches the correct one
+            if ($answer === $this->answer) {
                 return true;
             } else {
-                echo "PEEEUUTTT";
                 return false;
             }
     }
