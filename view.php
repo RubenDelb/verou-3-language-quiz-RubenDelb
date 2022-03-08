@@ -10,9 +10,11 @@
 <body>
 	<!-- TODO: add a form for the user to play the game -->
 	<form action="" method="post">
-		<p>Can you translate this word? : <?php echo $game->randomWord(); ?> </p>
-		<label for="word">Enter your answer here: </label>
-		<input id="word" name="word" type="text"><br>
+		<button name="newWordBtn" id="newWordBtn">NEW WORD</button><br>
+		<p>Can you translate this word? : <?= $game->randomWord(); ?> </p>
+		<label for="guessedAnswer">Enter your answer here: </label>
+		<input id="guessedAnswer" name="guessedAnswer" type="text"><br>
+		<input type="hidden" name="randomWordCheck" value="<?=$game->randomWord?>">
 		<input type="submit">
 		
 	</form>
