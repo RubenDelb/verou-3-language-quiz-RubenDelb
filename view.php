@@ -8,16 +8,25 @@
 	<title>Game</title>
 </head>
 <body>
-	<!-- TODO: add a form for the user to play the game -->
+	<!-- Add a form for the user to play the game -->
 	<form action="" method="post">
-		<button name="newWordBtn" id="newWordBtn">NEW WORD</button><br>
-		<p>Can you translate this word? : <?= $game->randomWord(); ?> </p>
+		<?php if(!isset($_SESSION['name'])) {
+		echo '<label for="name">Your username: </label>
+		<input type="text" id="name" name="name">
+		<input type="submit" id="submitNameBtn" name="submitNameBtn">';
+		} else {
+			echo '<h3>Player: '.$newPlayer->name.'</h3>'.'Your Score: '.$newPlayer->score.'<br>Mistakes: '.$_SESSION['mistakes'];
+		}
+		?>
+		
+	</form>
+	<form action="" method="post">
+		
+		<p>Can you translate this word? : <b><?= $game->randomWord(); ?></b> </p>
 		<label for="guessedAnswer">Enter your answer here: </label>
 		<input id="guessedAnswer" name="guessedAnswer" type="text"><br>
 		<input type="hidden" name="randomWordCheck" value="<?=$game->randomWord?>">
 		<input type="submit">
-		
 	</form>
-	<?php pre($_POST); ?>
 </body>
 </html>
