@@ -7,14 +7,21 @@ class Data
     public static function words(): array
     {
         return [
-            'pain' => 'bread',
-            'nain de jardin' => 'garden gnome',
-            'ouef' => 'egg',
-            'bouisson' => 'bush',
-            'chapeau' => 'hat',
-            'porte' => 'door',
-            'musique' => 'music',
-            'biscuit' => 'cookie',
+            'seekoei' => 'hippo',
+            'vistenk' => 'fish tank',
+            'gemorskos' => 'fastfood',
+            'plantvreter' => 'herbivore',
+            'glansglans' => 'famous',
+            'poephol' => 'anus',
+            'melkskommel' => 'milkshake',
+            'muntmasjien' => 'vending machine',
+            'vuurhoutjie' => 'match',
+            'spookasem' => 'candyfloss',
+            'stort' => 'shower',
+            'deurklokkie' => 'doorbell',
+            'plooie' => 'wrinkles',
+            'selfoon' => 'cellphone',
+            'winkeltrollie' => 'shopping cart',
         ];
     }
 }
