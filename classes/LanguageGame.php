@@ -29,13 +29,13 @@ class LanguageGame
             $this->randomWord();
         } else { // Option B: user has just submitted an answer    
             foreach($this->words as $wordObject) {
-                if($wordObject->word == $_POST['randomWordCheck']){
+                if($wordObject->word === $_POST['randomWordCheck']){
+                    $_SESSION['correctAnswer'] = $wordObject->answer;
                     echo $this->createMessage($wordObject);
                     return;    
                 }
             }
         }
-        
     }
     
     public function randomWord()
@@ -44,7 +44,6 @@ class LanguageGame
         $randomIndexNumber = rand(0, count($this->words)-1);
         $this->randomWord = strtolower($this->words[$randomIndexNumber]->word); 
         return $this->randomWord;
-        
     }
 
     public function createMessage($wordObject) // Generate a message for the user that can be shown
@@ -52,8 +51,11 @@ class LanguageGame
         // Verify the answer (use the verify function in the word class) - you'll need to get the used word from the array first
         if ($wordObject->verify($_POST["guessedAnswer"])) {
             $message = "<h3> YAY! Your answer is correct! </h3>";
+            $_SESSION['score']++ ;
         } else {
-            $message = "<h3> BOEHOE! Your answer is INCORRECT! </h3>";
+            $message = "<h3> Oh-No! Your answer is incorrect :-(  </h3>";
+            echo '<script>alert("The correct translation for '.$_POST['randomWordCheck'].' is '.$_SESSION['correctAnswer'].'")</script>';
+            $_SESSION['mistakes']++ ;
         }
         return $message;
     }
