@@ -31,7 +31,7 @@ class LanguageGame
             foreach($this->words as $wordObject) {
                 if($wordObject->word === $_POST['randomWordCheck']){
                     $_SESSION['correctAnswer'] = $wordObject->answer;
-                    echo $this->createMessage($wordObject);
+                    $_SESSION['message'] = $this->createMessage($wordObject);
                     return;    
                 }
             }

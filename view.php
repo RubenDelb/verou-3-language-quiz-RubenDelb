@@ -20,8 +20,8 @@
 		?>
 		
 	</form>
+	<?php if(isset($_SESSION['message'])) {echo '<h3>'.$_SESSION['message'].'</h3>';} ?>
 	<form action="" method="post">
-		
 		<p>Can you translate this word? : <b><?= $game->randomWord(); ?></b> </p>
 		<label for="guessedAnswer">Enter your answer here: </label>
 		<input id="guessedAnswer" name="guessedAnswer" type="text"><br>
